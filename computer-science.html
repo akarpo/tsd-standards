@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Michigan HS Computer Science Standards · Grades 9–12</title>
+<meta name="description" content="A reference for the Michigan K-12 Computer Science Standards (CSTA-aligned) at the HS level, with curated free resources, AP CS coverage, and Troy SD curriculum overlay." />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  td.confidence-low { color:#7c2d12; font-weight:600; }
+  ul.res { list-style:none; padding:0; margin:0; font-size:12px; line-height:1.45; }
+  ul.res li { padding:3px 0; }
+  ul.res a { color:var(--accent); text-decoration:none; font-weight:500; }
+  ul.res a:hover { text-decoration:underline; }
+  .rb { display:inline-block; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:1px 5px; border-radius:3px; margin-right:5px; vertical-align:middle; min-width:42px; text-align:center; }
+  .rb-khan { background:#e3edff; color:#1865f2; }
+  .rb-video { background:#f3e8ff; color:#9333ea; }
+  .rb-text { background:#dbeafe; color:#2563eb; }
+  .rb-tool { background:#ccfbf1; color:#0d9488; }
+  .rb-prac { background:#ffedd5; color:#ea580c; }
+  .rb-course { background:#fed7aa; color:#7c2d12; }
+  .rb-data { background:#dcfce7; color:#15803d; }
+  .res-note { font-size:10.5px; color:var(--ink-muted); display:block; margin-left:50px; margin-top:1px; }
+</style>
+</head>
+<body data-subject="cs">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Michigan Department of Education · Computer Science · 9–12</div>
+    <h1>Michigan 9–12 Computer Science Standards &amp; Skills
+      <small>Strand-by-strand reference for the Michigan K-12 Computer Science Standards (CSTA-aligned, adopted 2019), with curated free resources, AP CSP / AP CS A coverage, and Troy SD curriculum overlay.</small>
+    </h1>
+    <nav class="toc">
+      <a href="index.html">Overview</a>
+      <a href="math.html">Math (K–12)</a>
+      <a href="ela.html">ELA (K–12)</a>
+      <a href="science.html">Science (9–12)</a>
+      <a href="economics.html">Economics (9–12)</a>
+      <a href="computer-science.html" class="current">Computer Science (9–12)</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<div class="banner-warn">
+  <strong>Michigan K-12 Computer Science Standards.</strong> Adopted 2019, based verbatim on the
+  <a href="https://csteachers.org/k12standards/">CSTA K-12 Computer Science Standards (Revised 2017)</a>.
+  Five core concept strands. HS Level 3A (Grades 9-10) is for ALL students; Level 3B (Grades 11-12) is a
+  specialty extension. NWEA MAP Growth does NOT cover CS. CS courses at Troy are <strong>electives</strong> —
+  per district policy, electives are NOT eligible for test-out.
+</div>
+
+<section>
+  <h2>About the Michigan CS Standards</h2>
+  <p class="section-intro">
+    Michigan adopted CSTA's K-12 Computer Science Standards in 2019. Standards are organized into five core
+    concept strands, with HS work split into two levels. Identifier format is
+    <code>Level-Concept-Number</code> (e.g., <code>3A-IC-25</code> = HS Level 3A, Impacts of Computing,
+    standard 25).
+  </p>
+  <p style="font-size:13px;color:var(--ink-muted);margin-top:8px;">
+    Primary source: <a href="https://www.michigan.gov/-/media/Project/Websites/mde/Year/2019/04/03/CompSci_Standards_Accessible_Final_Draft.pdf">Michigan K-12 CS Standards (PDF)</a>
+  </p>
+</section>
+
+<section id="strands">
+  <h2><span class="grade-tag" style="background:#f1e8f8;color:#6b21a8;">HS CS Standards · Levels 3A &amp; 3B</span></h2>
+
+  <div class="sheet-tabs">
+    <span class="sheet-tab active"><span class="icon">📊</span> MDE Standards Matrix</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:11%">Domain / Strand</th>
+        <th style="width:18%">MDE Standards (Level 3A)</th>
+        <th style="width:22%">Skill / What students learn</th>
+        <th style="width:25%">Free Resources</th>
+        <th style="width:14%">Troy SD Curriculum</th>
+        <th style="width:10%">AP Coverage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="domain-cell">CS<br><small>Computing Systems</small></td>
+        <td><p class="code-list">3A-CS-01 thru 3A-CS-03</p></td>
+        <td><ul class="skill-list"><li>Hardware/software design tradeoffs</li><li>Levels of abstraction</li><li>Troubleshooting strategies</li></ul></td>
+        <td><ul class="res">
+          <li><span class="rb rb-khan">Khan</span><a href="https://www.khanacademy.org/computing/computers-and-internet">Computers &amp; the Internet</a></li>
+          <li><span class="rb rb-video">Video</span><a href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo">Crash Course Computer Science</a><span class="res-note">40-episode foundational series</span></li>
+          <li><span class="rb rb-course">Course</span><a href="https://code.org/educate/csd">Code.org: CS Discoveries</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://csfieldguide.org.nz/en/">CS Field Guide (free interactive textbook)</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://csunplugged.org/en/">CS Unplugged (free K-12 lessons)</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://www.nand2tetris.org/">Nand2Tetris (free open course)</a><span class="res-note">Build a computer from logic gates up</span></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://csteachers.org/k12standards/">CSTA K-12 CS Standards</a></li>
+        </ul></td>
+        <td><span class="note-text" style="font-size:11.5px;">Platform-based (no textbook) — likely Code.org or CodeHS</span> <span class="confidence-low" style="font-size:10px;">[unverified]</span></td>
+        <td>AP CSP Big Idea 1 (Creative Development); AP CSA covers system design via Java OOP.</td>
+      </tr>
+      <tr>
+        <td class="domain-cell">NI<br><small>Networks &amp; the Internet</small></td>
+        <td><p class="code-list">3A-NI-04 thru 3A-NI-08</p></td>
+        <td><ul class="skill-list"><li>Network protocols &amp; data transmission</li><li>Cybersecurity threats &amp; defenses</li><li>Cryptography basics</li></ul></td>
+        <td><ul class="res">
+          <li><span class="rb rb-khan">Khan</span><a href="https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:the-internet">Khan: The Internet</a></li>
+          <li><span class="rb rb-video">Video</span><a href="https://www.code.org/curriculum/videos">Code.org: How the Internet Works video series</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://www.cybrary.it/catalog/free/">Cybrary — free intro cybersecurity</a></li>
+          <li><span class="rb rb-course">★Top</span><a href="https://cyber.org/curricula">CYBER.ORG — free K-12 cyber curriculum</a><span class="res-note">Funded by CISA; rigorous &amp; classroom-ready</span></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://tryhackme.com/">TryHackMe (free tier)</a><span class="res-note">Hands-on cyber labs</span></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://overthewire.org/wargames/">OverTheWire wargames (free)</a></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://www.hackthebox.com/hacker/free-trial">Hack The Box (free tier)</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://www.cyberseek.org/">CyberSeek.org (career data &amp; pathways)</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://picoctf.org/">picoCTF (CMU) — free CTF platform</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://csfieldguide.org.nz/en/chapters/network-communication-protocols/">CS Field Guide: Networks</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://www.nsa.gov/Press-Room/Cybersecurity-Education/">NSA GenCyber program resources</a></li>
+        </ul></td>
+        <td><span class="note-text" style="font-size:11.5px;">Cybersecurity course; LTU Early College CS/CyberSec partnership</span></td>
+        <td>AP CSP Big Idea 4 (Computer Systems &amp; Networks).</td>
+      </tr>
+      <tr>
+        <td class="domain-cell">DA<br><small>Data &amp; Analysis</small></td>
+        <td><p class="code-list">3A-DA-09 thru 3A-DA-12</p></td>
+        <td><ul class="skill-list"><li>Data collection, storage, transformation</li><li>Modeling &amp; simulations</li><li>Data visualization &amp; interpretation</li></ul></td>
+        <td><ul class="res">
+          <li><span class="rb rb-khan">Khan</span><a href="https://www.khanacademy.org/math/statistics-probability">Statistics &amp; Probability</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://colab.research.google.com/">Google Colab (free Python notebooks)</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://jupyter.org/try">Project Jupyter (try Jupyter free)</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://public.tableau.com/">Tableau Public (free data viz)</a></li>
+          <li><span class="rb rb-course">★Top</span><a href="https://www.kaggle.com/learn">Kaggle Learn — free micro-courses</a><span class="res-note">Python, Pandas, ML, Data Viz</span></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://www.kaggle.com/datasets">Kaggle Datasets (free, thousands available)</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://www.dataquest.io/">Dataquest free path</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://pandas.pydata.org/docs/getting_started/index.html">pandas Getting Started (free docs)</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://wesmckinney.com/book/">Python for Data Analysis (Wes McKinney, free online)</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://www.python.org/about/gettingstarted/">Python.org Beginners Guide</a></li>
+          <li><span class="rb rb-data">Data</span><a href="https://www.data.gov/">data.gov (free US gov datasets)</a></li>
+        </ul></td>
+        <td><span class="note-text" style="font-size:11.5px;">Introduction to Data Science (after Geometry)</span></td>
+        <td>AP CSP Big Idea 2 (Data); AP CSA covers data structures (arrays, ArrayLists, 2D arrays).</td>
+      </tr>
+      <tr>
+        <td class="domain-cell">AP<br><small>Algorithms &amp; Programming</small></td>
+        <td><p class="code-list">3A-AP-13 thru 3A-AP-24</p></td>
+        <td><ul class="skill-list"><li>Algorithm design (sequencing, selection, iteration)</li><li>Variables, data types, control flow</li><li>Functions, parameters, scope</li><li>Iteration &amp; recursion</li><li>Testing &amp; debugging</li></ul></td>
+        <td><ul class="res">
+          <li><span class="rb rb-khan">Khan</span><a href="https://www.khanacademy.org/computing/computer-programming">Computer Programming (JS &amp; SQL)</a></li>
+          <li><span class="rb rb-course">★Top</span><a href="https://cs50.harvard.edu/x/">Harvard CS50x</a><span class="res-note">Best free intro CS course; free on edX</span></li>
+          <li><span class="rb rb-course">★Top</span><a href="https://csawesome.org/">CSAwesome (free AP CSA Java curriculum)</a><span class="res-note">College Board-endorsed AP CSA replacement</span></li>
+          <li><span class="rb rb-course">Course</span><a href="https://runestone.academy/">Runestone Academy (free interactive CS textbooks)</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://code.org/educate">Code.org K-12 CS curriculum</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://www.codehs.com/library">CodeHS free curriculum library</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://www.freecodecamp.org/">freeCodeCamp (free certification tracks)</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://www.theodinproject.com/">The Odin Project (full-stack web)</a></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://leetcode.com/">LeetCode (free algorithm problems)</a></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://www.hackerrank.com/">HackerRank (free practice + interview prep)</a></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://projecteuler.net/">Project Euler (math + programming)</a></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://usaco.guide/">USACO Guide (free competitive programming)</a></li>
+          <li><span class="rb rb-prac">Practice</span><a href="https://www.codewars.com/">Codewars (free progressive challenges)</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://greenteapress.com/wp/think-python-2e/">Think Python 2e (free)</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://automatetheboringstuff.com/">Automate the Boring Stuff with Python (free)</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://developer.mozilla.org/en-US/docs/Learn">MDN Web Docs (Mozilla, free)</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://www.w3schools.com/">W3Schools (free tutorials)</a></li>
+          <li><span class="rb rb-course">OCW</span><a href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/">MIT OCW: Intro CS &amp; Python</a></li>
+          <li><span class="rb rb-course">OCW</span><a href="https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/">MIT OCW: Introduction to Algorithms</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://csfirst.withgoogle.com/">Google CS First (free)</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://scratch.mit.edu/">Scratch (MIT, free block-based programming)</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://realpython.com/">Real Python (free articles + tutorials)</a></li>
+        </ul></td>
+        <td><span class="note-text" style="font-size:11.5px;">AP Computer Science A (Java); AP Computer Science Principles (language-agnostic)</span></td>
+        <td>This is the bulk of both AP CS courses. AP CSA = Java; AP CSP = block-based or any language.</td>
+      </tr>
+      <tr>
+        <td class="domain-cell">IC<br><small>Impacts of Computing</small></td>
+        <td><p class="code-list">3A-IC-25 thru 3A-IC-30</p></td>
+        <td><ul class="skill-list"><li>Computing's beneficial &amp; harmful effects</li><li>Personal data security &amp; privacy</li><li>Equity, access, accessibility</li><li>Intellectual property &amp; licensing</li></ul></td>
+        <td><ul class="res">
+          <li><span class="rb rb-tool">Tool</span><a href="https://ssd.eff.org/">EFF Surveillance Self-Defense (free guides)</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://cs181.stanford.edu/">Stanford CS181: Computers, Ethics &amp; Public Policy</a></li>
+          <li><span class="rb rb-course">Course</span><a href="https://code.org/curriculum/csp">Code.org: CSP — Impact of Computing units</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://internethealthreport.org/">Mozilla: Internet Health Report</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://ainowinstitute.org/publications">AI Now Institute reports</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://themarkup.org/">The Markup (algorithmic accountability journalism)</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://www.ajlunited.org/">Algorithmic Justice League</a></li>
+          <li><span class="rb rb-text">Text</span><a href="https://www.acm.org/code-of-ethics">ACM Code of Ethics</a></li>
+          <li><span class="rb rb-tool">Tool</span><a href="https://medialiteracynow.org/">Media Literacy Now (free curriculum)</a></li>
+          <li><span class="rb rb-video">Video</span><a href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo">Crash Course CS: Ethics episodes</a></li>
+        </ul></td>
+        <td><span class="note-text" style="font-size:11.5px;">Embedded across all CS courses</span></td>
+        <td>AP CSP Big Idea 5 (Impact of Computing) — explicit AP requirement; AP CSA does not directly cover.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ AP CS ============ -->
+<section id="ap-cs" style="margin-top:48px;">
+  <h2>AP Computer Science exams · Troy HS / Athens HS</h2>
+  <p class="section-intro">
+    Two AP CS exams + Cybersecurity elective. All available to students after Algebra 1. Both Troy HS and
+    Athens HS host AP CS programs (THS has an apcs.troyhigh.com domain suggesting an active program).
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>AP Exam</th>
+        <th>Typical Grade</th>
+        <th>Prerequisite</th>
+        <th>Content overview</th>
+        <th>At Troy?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:600;">AP Computer Science Principles (CSP)</td>
+        <td>9–12</td>
+        <td>None (Algebra 1 recommended)</td>
+        <td>Big Ideas: Creative Development, Data, Algorithms &amp; Programming, Computer Systems &amp; Networks, Impact of Computing. Language-agnostic — schools can use Python, JavaScript, Snap!, App Inventor, etc.</td>
+        <td><span style="color:#15803d;font-weight:600;">✓ Yes</span></td>
+      </tr>
+      <tr>
+        <td style="font-weight:600;">AP Computer Science A (CSA)</td>
+        <td>10–12</td>
+        <td>Algebra 1 (CSP optional)</td>
+        <td>Java programming: Object-Oriented Programming (OOP), classes &amp; inheritance, ArrayLists, 2D arrays, recursion, sorting, data abstraction. Equivalent to first-semester college CS.</td>
+        <td><span style="color:#15803d;font-weight:600;">✓ Yes</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:12.5px;color:var(--ink-muted);margin-top:12px;font-style:italic;">
+    <strong>Note:</strong> 2025-26 saw minor revisions to AP CSA (Java) — verify exam content with course
+    instructor. Cybersecurity at Troy is offered as an elective (after Algebra 1) and Troy SD has a Lawrence
+    Tech University Early College partnership for advanced CS / Cybersecurity.
+  </p>
+</section>
+
+<!-- ============ TROY TEST-OUT ============ -->
+<section id="troy-testout" style="margin-top:48px;">
+  <h2>Troy SD test-out for Computer Science</h2>
+  <div class="banner-warn" style="margin-bottom:18px;">
+    <strong>Important:</strong> CS courses at Troy are
+    <strong>electives</strong>, so per the district's non-math test-out policy they are
+    <strong>NOT eligible for test-out</strong>. Only required courses qualify. Students who want to advance
+    must take the prerequisites in sequence (Algebra 1 → AP CSP / AP CSA / Cybersecurity).
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <details>
+      <summary style="cursor:pointer;font-size:15px;font-weight:600;color:var(--ink);padding:8px 0;">Sources</summary>
+    <ul style="margin-top:8px;">
+      <li><a href="https://www.michigan.gov/-/media/Project/Websites/mde/Year/2019/04/03/CompSci_Standards_Accessible_Final_Draft.pdf">Michigan K-12 Computer Science Standards (PDF)</a></li>
+      <li><a href="https://www.michigan.gov/mde/services/academic-standards/michigan-k-12-computer-science-standards">MDE — K-12 Computer Science Standards</a></li>
+      <li><a href="https://csteachers.org/k12standards/">CSTA K-12 Computer Science Standards</a></li>
+      <li><a href="https://apstudents.collegeboard.org/courses/ap-computer-science-principles">College Board — AP Computer Science Principles</a></li>
+      <li><a href="https://apstudents.collegeboard.org/courses/ap-computer-science-a">College Board — AP Computer Science A</a></li>
+      <li><a href="https://www.khanacademy.org/computing">Khan Academy — Computing (free)</a></li>
+      <li><a href="https://code.org/educate">Code.org — K-12 CS Curriculum (free)</a></li>
+      <li><a href="https://www.codehs.com/">CodeHS (free tier)</a></li>
+      <li><a href="https://cs50.harvard.edu/">Harvard CS50 (free on edX)</a></li>
+      <li><a href="https://cyber.org/">CYBER.ORG — Free K-12 cyber curriculum</a></li>
+      <li><a href="https://www.troy.k12.mi.us/departments/academics/career-programs/early-career-readiness-program">Troy SD — LTU Early College program</a></li>
+    </ul>
+    </details>
+    <p style="margin-top:18px;font-size:12px;color:var(--ink-muted)">
+      Troy SD's CS courses typically use platform-based curricula (Code.org, CodeHS) rather than traditional
+      textbooks. Specific platform/curriculum used is not publicly disclosed; verify with Troy SD Curriculum
+      &amp; Instruction (248-823-5221) or the AP CS instructor at apcs.troyhigh.com.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
