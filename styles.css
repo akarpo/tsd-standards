@@ -742,3 +742,46 @@ table.filterable tbody td.drillable:hover::after {
   tbody td.strand-cell::before, tbody td.domain-cell::before { display: none; }
   .grade-nav { position: static; }
 }
+
+/* ===== Exam column (Math K-12 matrix) ===== */
+td.exam-cell {
+  vertical-align: middle;
+  text-align: center;
+  padding: 8px 6px;
+  background: #fbf8fd;
+}
+a.exam-link {
+  display: block;
+  padding: 9px 8px;
+  margin: 4px 0;
+  text-decoration: none;
+  color: var(--math);
+  background: white;
+  border: 1px solid #d8c8e8;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background 120ms, border-color 120ms;
+}
+a.exam-link:hover {
+  background: var(--math-soft);
+  border-color: var(--math);
+}
+a.exam-link .exam-cta {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+a.exam-link .exam-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-weight: 400;
+  margin-top: 2px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+@media (max-width: 760px) {
+  td.exam-cell { background: #fbf8fd; padding: 12px 14px; }
+  a.exam-link { display: inline-block; }
+}

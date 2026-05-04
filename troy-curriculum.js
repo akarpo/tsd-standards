@@ -308,7 +308,8 @@ window.TROY_CURRICULUM = {
 
   // ============================================================
   // ELA · TROY 6-12 (currently NOT a single published basal — novel-based + TCRWP)
-  // The 9-12 program is in active pilot/review through ~2027-28.
+  // The new 9-10 Lit/Comp curriculum is now in place (Honors track retired);
+  // 11-12 sequence remains under review toward 2027-28 adoption.
   // All AP ELA courses confirmed at both Troy HS and Athens HS (AP Capstone schools).
   // ============================================================
   "ela:g6-RL": [{ program: "Troy MS — ELA 6", citation: "Novel-based units, TCRWP-informed (no single published textbook)", coverage: "RL.6.1-10", status: "current", note: "Built around literary novels and teacher-curated text sets; under review for 2027-28 adoption." }],
@@ -330,12 +331,12 @@ window.TROY_CURRICULUM = {
   "ela:g8-L":  [{ program: "Troy MS — ELA 8", citation: "Conventions/vocabulary embedded", coverage: "L.8.1-6", status: "current" }],
 
   "ela:g910-RL": [
-    { program: "Troy HS / Athens HS — English 9 Lit/Comp", citation: "9 / 9 Honors Lit/Comp 1 & 2 (currently being piloted)", coverage: "RL.9-10.1-10", status: "current", note: "9th-grade team is actively piloting new 9-12 program for 2027-28 adoption." },
-    { program: "Troy HS / Athens HS — English 10 Lit/Comp", citation: "10 / 10 Honors Lit/Comp (genre-based: allegory, classic/contemporary novels, drama, poetry)", coverage: "RL.9-10.1-10", status: "current" }
+    { program: "Troy HS / Athens HS — English 9 Lit/Comp", citation: "9 Lit/Comp 1 & 2 (new curriculum, in place)", coverage: "RL.9-10.1-10", status: "current", note: "Honors track retired; the new 9-10 Lit/Comp sequence is now the single offered pathway." },
+    { program: "Troy HS / Athens HS — English 10 Lit/Comp", citation: "10 Lit/Comp (genre-based: allegory, classic/contemporary novels, drama, poetry)", coverage: "RL.9-10.1-10", status: "current" }
   ],
   "ela:g910-RI": [
-    { program: "Troy HS / Athens HS — English 9 Lit/Comp", citation: "9 / 9 Honors Lit/Comp", coverage: "RI.9-10.1-10", status: "current" },
-    { program: "Troy HS / Athens HS — English 10 Lit/Comp", citation: "10 / 10 Honors Lit/Comp (rhetoric, nonfiction text sets)", coverage: "RI.9-10.1-10", status: "current" }
+    { program: "Troy HS / Athens HS — English 9 Lit/Comp", citation: "9 Lit/Comp", coverage: "RI.9-10.1-10", status: "current" },
+    { program: "Troy HS / Athens HS — English 10 Lit/Comp", citation: "10 Lit/Comp (rhetoric, nonfiction text sets)", coverage: "RI.9-10.1-10", status: "current" }
   ],
   "ela:g910-W": [
     { program: "Troy HS / Athens HS — English 9 / 10", citation: "Embedded writing across all genre units", coverage: "W.9-10.1-10", status: "current" }

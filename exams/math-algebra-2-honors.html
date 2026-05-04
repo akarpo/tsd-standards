@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Algebra 2 Honors · Testing-Out Exam · TSD Mathematics</title>
+<meta name="description" content="A two-hour testing-out exam for Algebra 2 Honors covering polynomial, rational, exponential, logarithmic, and trigonometric functions, complex numbers, sequences and series, conic sections, and statistical inference." />
+<link rel="stylesheet" href="exam-styles.css" />
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      tags: 'none'
+    },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+
+<article class="exam-sheet">
+
+  <div class="exam-banner">
+    <div class="course">Troy School District · Mathematics · Algebra 2 Honors</div>
+    <div class="meta">Form A · 120 minutes · 100 points</div>
+  </div>
+
+  <h1 class="exam-title">Algebra 2 Honors — Testing-Out Examination</h1>
+  <p class="exam-subtitle">A student who passes this examination has demonstrated mastery of the Common Core Algebra 2 standards at the honors level (CCSS-M conceptual categories N-CN, A-APR, A-REI, F-IF, F-BF, F-LE, F-TF, S-IC) and is eligible to advance directly to Pre-Calculus or AP Precalculus.</p>
+
+  <div class="exam-id-strip">
+    <div class="field"><span class="label">Student Name</span><span class="blank"></span></div>
+    <div class="field"><span class="label">Proctor</span><span class="blank"></span></div>
+    <div class="field"><span class="label">Score</span><span class="blank"></span></div>
+  </div>
+
+  <section class="instructions">
+    <h3>Instructions</h3>
+    <ul>
+      <li><strong>Time limit:</strong> 120 minutes total. Part I (no-calculator) is intended to take about 45 minutes; Part II (calculator-permitted) the remaining 75 minutes. You may budget your own time within these recommendations.</li>
+      <li><strong>Show all work.</strong> An unsupported answer — even a correct one — receives no more than half credit. Box or circle your final answer.</li>
+      <li>Part I prohibits calculators of any kind. For Part II, a graphing calculator is permitted but no symbolic-algebra system (CAS).</li>
+      <li>Where a problem says <em>“Show that …”</em> or <em>“Justify …”</em>, a numerical answer alone is not acceptable; you must give a written argument or algebraic derivation.</li>
+      <li>Express exact values exactly (e.g., \(\sqrt{2},\; \ln 3,\; \pi/6\)). Round numerical answers only when the problem says so, and to the precision the problem requests.</li>
+      <li>You may use the back of any page for additional work; clearly label any work continued elsewhere.</li>
+    </ul>
+  </section>
+
+  <!-- =========================================================
+       PART I · NO CALCULATOR
+       ========================================================= -->
+  <div class="exam-section-divider">Part I &middot; No Calculator &middot; Problems 1–5 &middot; 35 pts &middot; ~45 min</div>
+
+  <!-- Problem 1 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">1.</span>
+      <span class="title">Polynomial structure and sign analysis</span>
+      <span class="points">7 points</span>
+    </div>
+    <div class="stem">
+      <p>Let \( P(x) = x^4 - 2x^3 - 11x^2 + 12x + 36 \).</p>
+    </div>
+    <ol class="parts">
+      <li>Show that \( x = -2 \) is a zero of \(P(x)\). State whether you used direct substitution or synthetic division, and show the work.</li>
+      <li>Using your work in (a), factor \(P(x)\) completely over the integers. (Hint: after dividing out \((x+2)\), the cubic factor again has a rational root.)</li>
+      <li>Sketch \( y = P(x) \) on a labeled coordinate plane. Mark every \(x\)-intercept with its multiplicity and indicate the qualitative location of each local extremum (you do not need to compute extrema exactly — reason from the factored form and end behavior).</li>
+      <li>Determine the set of all real \(x\) for which \(P(x) \le 0\). Express your answer in interval notation. Give a one-sentence justification using the sign of each linear factor.</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 2 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">2.</span>
+      <span class="title">Complex roots and the Fundamental Theorem of Algebra</span>
+      <span class="points">6 points</span>
+    </div>
+    <div class="stem">
+      <p>A polynomial \(Q(x)\) of degree 4 with <em>real</em> coefficients and leading coefficient 1 has \(1 + 2i\) and \(\sqrt{3}\) among its zeros.</p>
+    </div>
+    <ol class="parts">
+      <li>Identify all four zeros of \(Q(x)\). Justify briefly why each must appear, citing the conjugate-pair principle for real coefficients.</li>
+      <li>Write \(Q(x)\) as a product of two real quadratic factors. Carry out the multiplication carefully, simplifying every step. (Do not expand the final product unless requested.)</li>
+      <li>Suppose instead \(R(x)\) is a degree-3 polynomial with real coefficients whose zeros include \(1 + 2i\) and \(4\). Is \(R(x)\) determined uniquely up to leading coefficient? Explain in one or two sentences.</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 3 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">3.</span>
+      <span class="title">Composition, inverse, and domain</span>
+      <span class="points">7 points</span>
+    </div>
+    <div class="stem">
+      <p>Let \( \displaystyle f(x) = \frac{2x - 3}{x + 1} \) and \( g(x) = \sqrt{\,x - 2\,} \).</p>
+    </div>
+    <ol class="parts">
+      <li>Compute \((f \circ g)(6)\) exactly. Show each substitution.</li>
+      <li>Determine the domain of \(f \circ g\). Express your answer in interval notation, and explain in one sentence why each excluded value is excluded.</li>
+      <li>Find \(f^{-1}(x)\) algebraically. State the domain and range of \(f^{-1}\). (Use the domain–range duality between \(f\) and \(f^{-1}\); do not solve a separate inequality.)</li>
+      <li>Verify directly using your formula in (c) that \(f\bigl(f^{-1}(5)\bigr) = 5\). Show every step.</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 4 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">4.</span>
+      <span class="title">Logarithm properties &amp; equation solving</span>
+      <span class="points">8 points</span>
+    </div>
+    <div class="stem">
+      <p>This problem permits no calculator. Use logarithm properties only.</p>
+    </div>
+    <ol class="parts">
+      <li>Express \( \displaystyle \log_3\!\left(\frac{81}{\sqrt{3} \cdot 9^{\,n}}\right) \) as a single number plus a multiple of \(n\). Show each property of logarithms you use, and name it (product, quotient, power).</li>
+      <li>Solve for \(x\): \( \log_2 x + \log_2(x - 6) = 4 \). Show all algebraic work. State which solution(s) are valid and explain why any extraneous solutions must be discarded.</li>
+      <li>On the same axes, sketch \( y = \log_2 x \) and \( y = \log_2(x - 4) - 1 \). Label each asymptote, each \(x\)-intercept, and one additional point on each curve. Then describe in one sentence the geometric transformation taking the first graph to the second.</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 5 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">5.</span>
+      <span class="title">Trigonometric values and identity verification</span>
+      <span class="points">7 points</span>
+    </div>
+    <ol class="parts">
+      <li>Find the exact value of \( \cos\!\left(\dfrac{7\pi}{12}\right) \). Identify which sum or difference identity you use, and why your decomposition of \(7\pi/12\) is convenient.</li>
+      <li>Suppose \( \sin\theta = \dfrac{3}{5} \) and \( \theta \in \!\left(\dfrac{\pi}{2},\; \pi\right) \). Find the exact values of \( \sin(2\theta) \) and \( \cos(2\theta) \). Justify the sign of \(\cos\theta\).</li>
+      <li>Verify the identity \( \displaystyle \frac{1 - \cos^2 x}{\sin x \,\cos x} = \tan x \) for all \(x\) for which both sides are defined. Then state explicitly the values of \(x\) (in \([0, 2\pi)\)) for which either side is undefined, and confirm those are precisely the same set on each side.</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- =========================================================
+       PART II · CALCULATOR PERMITTED
+       ========================================================= -->
+  <div class="exam-section-divider">Part II &middot; Calculator Permitted &middot; Problems 6–12 &middot; 65 pts &middot; ~75 min</div>
+
+  <!-- Problem 6 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">6.</span>
+      <span class="title">Rational function analysis &amp; pharmacokinetics</span>
+      <span class="points">10 points</span>
+    </div>
+    <div class="stem">
+      <p>A simple pharmacokinetic model gives the concentration \(C\) (in mg / L) of a drug in the bloodstream as a function of time \(t\) (in hours) since injection,
+      \[ C(t) = \frac{12\,t}{t^2 + 4}, \qquad t \ge 0. \]</p>
+    </div>
+    <ol class="parts">
+      <li>Compute \(C(0)\), \(C(2)\), and \(C(10)\). Round to two decimal places.</li>
+      <li>Identify any horizontal asymptote of \(y = C(t)\). State the value and explain in one sentence what it tells you about the drug's long-term behavior.</li>
+      <li>Show algebraically that \(C\) is increasing on \([0, 2]\) and decreasing on \([2, \infty)\). <em>Hint:</em> consider the difference \(C(t) - C(2)\) and factor — calculus is not required.</li>
+      <li>The drug is therapeutically effective at concentrations of at least 2 mg / L. For approximately how long does the drug remain effective? Solve \(C(t) \ge 2\) algebraically and report the time interval to the nearest tenth of an hour. <span class="callout"><strong>Note:</strong> a calculator-only "intersect" answer earns at most half credit; you must produce the equation and reduce it.</span></li>
+      <li>Suppose a second injection of equal dose is administered at \(t = 5\), and the two drug processes obey linear superposition. Sketch — without computing exact values — the new total concentration \(C_{\text{tot}}(t)\) for \(0 \le t \le 14\). Briefly justify your sketch's qualitative features (initial rise, peak placement, eventual decay).</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 7 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">7.</span>
+      <span class="title">Continuous exponential decay — caffeine</span>
+      <span class="points">8 points</span>
+    </div>
+    <div class="stem">
+      <p>A 200 mg dose of caffeine is consumed at 8:00 a.m. The half-life of caffeine in an average adult is 5 hours. Let \(Q(t)\) denote the milligrams of caffeine remaining in the body \(t\) hours after consumption.</p>
+    </div>
+    <ol class="parts">
+      <li>Write a continuous-decay model of the form \(Q(t) = Q_0\,e^{kt}\). Determine \(Q_0\) and \(k\) <em>exactly</em> (i.e., express \(k\) using \(\ln 2\)).</li>
+      <li>Using your model, how much caffeine remains at 6:00 p.m.? Round to the nearest tenth of a milligram.</li>
+      <li>Caffeine impairs sleep at concentrations above 50 mg. At what time of day does the caffeine first drop below 50 mg? Show your work and round to the nearest minute.</li>
+      <li>The same person consumes a second 100 mg dose at 2:00 p.m. Write a piecewise function \(Q_{\text{tot}}(t)\) for the total caffeine in their body for \(0 \le t \le 18\), where \(t\) is hours after 8:00 a.m. Use your exact \(k\) from part (a).</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 8 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">8.</span>
+      <span class="title">Logarithmic scales — earthquake magnitude</span>
+      <span class="points">9 points</span>
+    </div>
+    <div class="stem">
+      <p>The Richter (moment-magnitude) magnitude \(M\) of an earthquake is related to the energy \(E\) (in joules) it releases by
+      \[ M = \tfrac{2}{3} \,\log_{10}\!\left(\frac{E}{E_0}\right), \qquad E_0 = 10^{4.4}\ \text{J}. \]</p>
+    </div>
+    <ol class="parts">
+      <li>Solve the relation for \(E\) in terms of \(M\). Simplify so that \(E\) is written as a single power of 10.</li>
+      <li>The 1906 San Francisco earthquake measured \(M_{\text{SF}} = 7.9\). The 2011 Tōhoku earthquake measured \(M_{\text{T}} = 9.1\). Compute the ratio \(E_{\text{T}}/E_{\text{SF}}\). Show the algebra symbolically before evaluating numerically; round the final number to the nearest integer.</li>
+      <li>Explain in one or two complete sentences what your answer to (b) implies physically.</li>
+      <li>A scientist proposes redefining magnitude using natural logarithm: \( M' = \tfrac{2}{3}\, \ln(E/E_0) \). Express \(M'\) as a constant multiple of \(M\); that is, find \(c\) such that \(M' = cM\). Round \(c\) to four decimal places, and write one sentence on why \(c \ne 1\).</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 9 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">9.</span>
+      <span class="title">Sinusoidal modeling — Ferris wheel</span>
+      <span class="points">10 points</span>
+    </div>
+    <div class="stem">
+      <p>A Ferris wheel has diameter 80 ft. Its lowest point is 5 ft above the ground. The wheel rotates at a constant rate, completing one full revolution every 90 seconds. A passenger boards at the lowest point at \(t = 0\). Let \(h(t)\) be the passenger's height above the ground (in feet) at time \(t\) seconds after boarding.</p>
+    </div>
+    <ol class="parts">
+      <li>Identify the amplitude, period, midline (vertical shift), and starting position. Then write \(h(t)\) as an explicit cosine function of \(t\). Justify the sign you use on the cosine.</li>
+      <li>At what times during the first revolution (\(0 \le t \le 90\)) is the passenger exactly 65 ft above the ground? Solve algebraically; round each time to the nearest tenth of a second.</li>
+      <li>During what fraction of each revolution is the passenger more than 65 ft above the ground? Justify using the times from (b) and the periodicity of \(h\).</li>
+      <li>Suppose the wheel speeds up so that the new period is 60 seconds (no other parameters change). Write the new function \(\tilde h(t)\). Describe in one sentence the geometric difference between \(h\) and \(\tilde h\) using the language of horizontal stretch / compression.</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 10 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">10.</span>
+      <span class="title">Annuities, geometric series, and perpetuity</span>
+      <span class="points">8 points</span>
+    </div>
+    <div class="stem">
+      <p>A retirement contributor deposits $200 at the end of each month for 30 years (360 deposits). The account earns interest at a nominal annual rate of 6%, compounded monthly. Use a monthly interest factor of \(r = 1 + 0.06/12 = 1.005\) throughout.</p>
+    </div>
+    <ol class="parts">
+      <li>Let \(a_n\) denote the value at the end of month 360 of the deposit made at the end of month \(n\), where \(n = 1, 2, \ldots, 360\). Write \(a_n\) as a function of \(n\). Identify whether the sequence \((a_n)_{n=1}^{360}\) is arithmetic, geometric, or neither, and state any common ratio.</li>
+      <li>Express the final account value \(S = a_1 + a_2 + \cdots + a_{360}\) as a finite geometric series and compute \(S\) to the nearest dollar.</li>
+      <li>After year 30, the contributor stops depositing and lets the balance grow undisturbed for 5 more years at the same monthly rate. What is the final balance after 35 years? Round to the nearest dollar.</li>
+      <li>A separate annuity instead pays $1{,}000 every six months <em>in perpetuity</em>, with discount rate 3% per six-month period. Show the geometric-series argument that gives a finite present value, and compute that present value.</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 11 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">11.</span>
+      <span class="title">Conic sections — bridge arch &amp; suspender rods</span>
+      <span class="points">8 points</span>
+    </div>
+    <div class="stem">
+      <p>The roadway of a suspension bridge is a horizontal segment of length 200 ft. The supporting cable is a parabola whose lowest point is exactly 50 ft below the roadway and centered horizontally on the bridge. The two ends of the cable just touch the roadway at the two ends of the bridge. Vertical suspender rods connect the roadway to the cable.</p>
+    </div>
+    <ol class="parts">
+      <li>Place a coordinate system with the lowest point of the cable at the origin and the roadway running horizontally above it. Write the equation of the parabolic cable in the form \( y = a x^2 \). Determine \(a\) exactly.</li>
+      <li>A suspender rod is placed every 25 horizontal feet, beginning at the center. Compute the length of each rod (the vertical distance from cable to roadway) at horizontal positions \(x = 0, 25, 50, 75, 100\). Present the answer as a small table, rod lengths to the nearest foot.
+        <table class="data" aria-label="Suspender rod table — student to complete">
+          <thead><tr><th>Horizontal position \(x\) (ft)</th><th>Rod length (ft)</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>&nbsp;</td></tr>
+            <tr><td>25</td><td>&nbsp;</td></tr>
+            <tr><td>50</td><td>&nbsp;</td></tr>
+            <tr><td>75</td><td>&nbsp;</td></tr>
+            <tr><td>100</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+      </li>
+      <li>The total length of cable used (the arc length of the parabola from \(x = -100\) to \(x = 100\)) is approximately 218 ft (you need not derive this). Find the total length of all suspender rods. Count the central rod once and each pair at \(x = \pm 25, \pm 50, \pm 75\) twice; do <em>not</em> count rods at the bridge ends, which have length 0. Show your sum.</li>
+      <li>An engineer proposes replacing the parabolic cable with an elliptical arc passing through the same three control points: \((-100, 50)\), \((0, 0)\), and \((100, 50)\). Show that infinitely many ellipses (with axes parallel to the coordinate axes) pass through these three points. Provide one specific ellipse equation in standard form, then state in one sentence what additional condition would pin the ellipse down uniquely.</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- Problem 12 -->
+  <div class="problem">
+    <div class="problem-head">
+      <span class="num">12.</span>
+      <span class="title">Statistical inference — proportion test</span>
+      <span class="points">10 points</span>
+    </div>
+    <div class="stem">
+      <p>A school district claims that 70% of its graduates enroll in college within one year of graduation. A skeptical school-board member surveys a simple random sample of 250 recent graduates and finds that 162 of them enrolled in college within that window.</p>
+    </div>
+    <ol class="parts">
+      <li>Let \(\hat p\) denote the sample proportion. Compute \(\hat p\) to four decimal places.</li>
+      <li>State suitable null and alternative hypotheses to investigate whether the district's 70% claim overstates the true proportion. Use \(p_0\) for the hypothesized value.</li>
+      <li>Verify all conditions for using a Normal approximation to the sampling distribution of \(\hat p\) under the null. State each condition explicitly: random sampling, independence (10% rule), and the success/failure check using \(np_0\) and \(n(1-p_0)\).</li>
+      <li>Compute the test statistic \(z\) and find the corresponding one-sided \(p\)-value. Show the standard-error formula and your arithmetic; round \(z\) to two decimals and the \(p\)-value to four.</li>
+      <li>State a conclusion in context using a significance level of \(\alpha = 0.05\). Quote the \(p\)-value, compare it to \(\alpha\), and write one full sentence about what this means for the district's claim.</li>
+      <li>Construct a 95% confidence interval for the true population proportion \(p\), using \(\hat p\) (not \(p_0\)) as the center. Give the interval to four decimal places, then write one full sentence interpreting the interval in context. Note whether the value 0.70 lies inside or outside the interval, and how that observation is consistent — or not — with your conclusion in (e).</li>
+    </ol>
+    <div class="work-space tall"></div>
+  </div>
+
+  <!-- ============================ Footer ============================ -->
+  <footer class="exam-footer">
+    <div>End of examination &middot; Algebra 2 Honors &middot; Form A &middot; 12 problems / 100 points</div>
+    <a href="../math.html#g-alg2">&larr; Back to standards matrix</a>
+  </footer>
+
+</article>
+
+</body>
+</html>

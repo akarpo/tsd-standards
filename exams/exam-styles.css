@@ -1,0 +1,411 @@
+/* =====================================================================
+   Shared exam stylesheet · TSD Standards Testing-Out Exams
+   Design intent: a paper-like, classroom-distributable exam page.
+   Print-ready (one problem per page when long), screen-readable, generous
+   whitespace.  No frameworks; depends only on system fonts and MathJax 3
+   (loaded per-page via CDN).
+   ===================================================================== */
+
+:root {
+  --paper:        #fdfdfb;
+  --paper-edge:   #e8e4d9;
+  --ink:          #1a1a1a;
+  --ink-soft:     #3a3a3a;
+  --ink-muted:    #6b6b6b;
+  --rule:         #d8d4c5;
+  --rule-strong:  #b8b3a0;
+  --accent:       #6b21a8;        /* math purple, matches the matrix */
+  --accent-soft:  #f1e8f8;
+  --warn:         #b45309;
+  --warn-soft:    #fff8e6;
+  --good:         #15803d;
+  --good-soft:    #e6f4ea;
+  --code-bg:      #f3f1e8;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper-edge);
+  font-family: "Charter", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The "page" — a sheet of paper centered on the screen background. */
+.exam-sheet {
+  max-width: 880px;
+  margin: 32px auto 80px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+  padding: 56px 64px 80px;
+}
+
+/* ===================== Header ===================== */
+.exam-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 14px;
+  margin-bottom: 8px;
+}
+
+.exam-banner .course {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--accent);
+}
+.exam-banner .meta {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+h1.exam-title {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  margin: 14px 0 6px;
+  color: var(--ink);
+}
+.exam-subtitle {
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 24px;
+  font-size: 16px;
+}
+
+/* Identity strip: name / proctor / score */
+.exam-id-strip {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 0.6fr;
+  gap: 18px;
+  margin: 18px 0 28px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+.exam-id-strip .field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.exam-id-strip .field .label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+}
+.exam-id-strip .field .blank {
+  border-bottom: 1px solid var(--ink);
+  height: 22px;
+}
+
+/* Instructions card */
+.instructions {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 14px 18px;
+  margin: 0 0 28px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  border-radius: 0 4px 4px 0;
+}
+.instructions h3 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.instructions ul { margin: 6px 0 0 20px; padding: 0; }
+.instructions li { margin-bottom: 4px; }
+
+/* Section divider — used for "Part I: No Calculator" */
+.exam-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 36px 0 18px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.exam-section-divider::before,
+.exam-section-divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--rule-strong);
+}
+
+/* ===================== Problems ===================== */
+.problem {
+  margin: 0 0 44px;
+  padding-top: 6px;
+  page-break-inside: avoid;
+}
+.problem .problem-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.problem .problem-head .num {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--accent);
+  min-width: 38px;
+}
+.problem .problem-head .title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0.01em;
+}
+.problem .problem-head .points {
+  margin-left: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.problem .stem { margin-bottom: 14px; }
+.problem .stem p { margin: 0 0 10px; }
+
+/* Multi-part subproblems */
+ol.parts {
+  margin: 8px 0 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: part;
+}
+ol.parts > li {
+  position: relative;
+  padding: 6px 0 18px 38px;
+  margin: 0;
+  counter-increment: part;
+}
+ol.parts > li::before {
+  content: "(" counter(part, lower-alpha) ")";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: 15px;
+  width: 30px;
+}
+ol.parts ol.parts > li::before { content: "(" counter(part, lower-roman) ")"; }
+
+/* Answer affordances */
+.answer-blank {
+  display: inline-block;
+  border-bottom: 1px solid var(--ink);
+  min-width: 120px;
+  height: 1.2em;
+  margin: 0 4px;
+  vertical-align: bottom;
+}
+.work-space {
+  border: 1px dashed var(--rule-strong);
+  background: #fdfcf6;
+  margin: 12px 0 0;
+  min-height: 110px;
+  border-radius: 3px;
+}
+.work-space.tall { min-height: 200px; }
+.work-space.short { min-height: 70px; }
+.work-space::before {
+  content: "Work space";
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  padding: 4px 8px 0;
+}
+
+/* Inline data tables inside problems */
+table.data {
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  font-variant-numeric: tabular-nums;
+}
+table.data th, table.data td {
+  border: 1px solid var(--rule-strong);
+  padding: 6px 12px;
+  text-align: center;
+}
+table.data th {
+  background: var(--accent-soft);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+table.data caption {
+  caption-side: top;
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+  font-style: italic;
+}
+
+/* Coordinate-grid inset (for graphs) */
+.grid-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 14px 0;
+}
+.grid-figure svg { max-width: 100%; height: auto; }
+.grid-figure figcaption {
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* "Show that…" / "Justify…" callout */
+.callout {
+  background: var(--warn-soft);
+  border-left: 3px solid var(--warn);
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 14px;
+  color: #6b3a09;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  border-radius: 0 4px 4px 0;
+}
+.callout strong { color: var(--warn); }
+
+/* Picture-based items (K-2 exams) */
+.pictogram {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+  font-size: 26px;
+  line-height: 1;
+}
+.shape-row {
+  display: flex;
+  gap: 14px;
+  margin: 12px 0;
+  align-items: center;
+}
+.shape-row .shape {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--rule-strong);
+  background: white;
+  border-radius: 4px;
+}
+
+/* Footer */
+.exam-footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+.exam-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.exam-footer a:hover { text-decoration: underline; }
+
+/* ===================== Matrix exam-cell styles =====================
+   These hooks live on math.html (added by the column rewrite).  Putting
+   them here keeps the exam-related styling co-located, but math.html
+   needs to <link> this stylesheet too — handled by adding the link in
+   styles.css via @import would be cleaner; for now, math.html keeps
+   inline rules below. */
+td.exam-cell { vertical-align: middle; text-align: center; padding: 8px 6px; }
+a.exam-link {
+  display: block;
+  padding: 8px 6px;
+  margin: 4px 0;
+  text-decoration: none;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid #d8c8e8;
+  border-radius: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  transition: background 120ms;
+}
+a.exam-link:hover { background: #e2d4ee; }
+a.exam-link .exam-cta {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+a.exam-link .exam-sub {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-muted);
+  margin-top: 1px;
+}
+
+/* ===================== Print ===================== */
+@media print {
+  body { background: white; }
+  .exam-sheet {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+  .work-space { break-inside: avoid; }
+  .problem    { break-inside: avoid; }
+  .exam-footer { display: none; }
+}
+
+/* ===================== Small screens ===================== */
+@media (max-width: 700px) {
+  .exam-sheet { padding: 32px 22px 60px; margin: 0; border: none; box-shadow: none; }
+  h1.exam-title { font-size: 26px; }
+  body { font-size: 16px; }
+  .exam-id-strip { grid-template-columns: 1fr; }
+}
