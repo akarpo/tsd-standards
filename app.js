@@ -139,14 +139,30 @@
 
   // ---------- Table transformation: collapse NWEA columns + add Resources ----------
   function transformTable(table, subject) {
+    // Detect whether this table has the "Exam" column on math.html (an
+    // exam-link cell with rowspan that visually fills the rightmost
+    // column across multiple grade-domain rows). When present:
+    //   - the rightmost header is "Exam" (not "Notes")
+    //   - rows that LACK a 7th cell are NOT given a synthesized Notes cell
+    //     (the rowspan from another row covers them)
+    var hasExamColumn = !!table.querySelector("td.exam-cell");
+
     // 1. Update header row to new column structure
     // ELA uses a tighter Domain/Standards/NWEA layout to free up space for the
     // (much larger) Skill and Free Resources columns the user reads in practice.
     var thead = table.querySelector("thead");
     if (thead) {
-      var widths = subject === "ela"
-        ? { strand: "5%",  std: "8%",  skill: "22%", res: "36%", troy: "8%",  nwea: "14%", notes: "7%" }
-        : { strand: "11%", std: "12%", skill: "18%", res: "24%", troy: "14%", nwea: "14%", notes: "7%" };
+      // Math + Exam-column tables get a wider rightmost column to fit the
+      // Form A / Form B exam links (originally ~14% in math.html).
+      var widths;
+      if (subject === "ela") {
+        widths = { strand: "5%", std: "8%", skill: "22%", res: "36%", troy: "8%", nwea: "14%", last: "7%" };
+      } else if (hasExamColumn) {
+        widths = { strand: "10%", std: "11%", skill: "16%", res: "22%", troy: "13%", nwea: "13%", last: "15%" };
+      } else {
+        widths = { strand: "11%", std: "12%", skill: "18%", res: "24%", troy: "14%", nwea: "14%", last: "7%" };
+      }
+      var lastLabel = hasExamColumn ? "Exam" : "Notes";
       thead.innerHTML =
         '<tr>' +
           '<th style="width:' + widths.strand + '">Domain / Strand</th>' +
@@ -155,14 +171,21 @@
           '<th style="width:' + widths.res    + '">Free Resources <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-muted);font-size:10px;">(click Skills cell for full library)</span></th>' +
           '<th style="width:' + widths.troy   + '">Troy SD Curriculum</th>' +
           '<th style="width:' + widths.nwea   + '">NWEA Overlap</th>' +
-          '<th style="width:' + widths.notes  + '">Notes</th>' +
+          '<th style="width:' + widths.last   + '">' + lastLabel + '</th>' +
         '</tr>';
     }
 
     // 2. For each body row: collapse old columns, build new ones.
     // ELA tables (and Math HS Pre-Calc/Calc/Stats tables) ship with 6
     // body cells (no Notes column); K-8 + Algebra-track Math tables ship
-    // with 7 (including Notes). Treat notesCell as optional.
+    // with 7 cells, where the 7th may be:
+    //   - a regular Notes cell (most cases), OR
+    //   - an exam-cell rowspan="5" / "4" cell that visually covers the next
+    //     few rows.
+    // Rows that lack a 7th cell are either ELA rows (synthesize empty
+    // Notes) or math rows visually covered by an Exam rowspan from a
+    // sibling row (do NOT synthesize anything — the rowspan handles the
+    // last column).
     var rows = table.querySelectorAll("tbody tr");
     rows.forEach(function (row) {
       var cells = row.querySelectorAll("td");
@@ -177,7 +200,7 @@
       var nweaTestCell    = cells[3];
       var nweaAreaCell    = cells[4];
       var ritCell         = cells[5];
-      var notesCell       = cells[6] || null; // may be missing
+      var lastCell        = cells[6] || null; // Notes cell, Exam cell, or null
 
       var cellId = deriveCellId(row, subject);
       var hasData = cellId && window.DRILL_DATA && window.DRILL_DATA[cellId];
@@ -288,22 +311,38 @@
       }
 
       // Replace row contents with new column order
-      // Original: [domain, standards, skills, nweaTest, nweaArea, rit, notes?]
-      // New:      [domain, standards, skills, resources, troy, nweaCell, notes]
-      // If the source row had no notes cell, synthesize an empty one so the
-      // body shape matches the 7-column header.
+      // Original: [domain, standards, skills, nweaTest, nweaArea, rit, notes/exam?]
+      // New:      [domain, standards, skills, resources, troy, nweaCell, notes/exam]
+      // Three cases for the 7th (rightmost) cell:
+      //   (a) lastCell exists (Notes or Exam cell) — insert new cells BEFORE it
+      //   (b) lastCell is null AND this table has an Exam column — the row is
+      //       visually covered by an Exam rowspan from a sibling row, so
+      //       just append the new cells (do NOT synthesize a Notes cell)
+      //   (c) lastCell is null AND no Exam column (typical ELA / Math
+      //       Pre-Calc-Stats) — synthesize an empty Notes cell to match
+      //       the 7-column header
       row.removeChild(nweaTestCell);
       row.removeChild(nweaAreaCell);
       row.removeChild(ritCell);
-      if (!notesCell) {
-        notesCell = document.createElement("td");
+      if (lastCell) {
+        row.insertBefore(resourcesCell, lastCell);
+        row.insertBefore(troyCell, lastCell);
+        row.insertBefore(nweaCell, lastCell);
+      } else if (hasExamColumn) {
+        // Rowspan from another row covers the last column; just append.
+        row.appendChild(resourcesCell);
+        row.appendChild(troyCell);
+        row.appendChild(nweaCell);
+      } else {
+        // Synthesize an empty Notes cell so body matches the 7-col header.
+        var notesCell = document.createElement("td");
         notesCell.setAttribute("data-label", "Notes");
         notesCell.innerHTML = '<span class="note-text">—</span>';
         row.appendChild(notesCell);
+        row.insertBefore(resourcesCell, notesCell);
+        row.insertBefore(troyCell, notesCell);
+        row.insertBefore(nweaCell, notesCell);
       }
-      row.insertBefore(resourcesCell, notesCell);
-      row.insertBefore(troyCell, notesCell);
-      row.insertBefore(nweaCell, notesCell);
 
       // Make the WHOLE row clickable to open the modal (not just Skills).
       // We still mark the Skills cell as drillable for the visual cue, but
