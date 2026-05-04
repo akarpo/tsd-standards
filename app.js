@@ -140,17 +140,22 @@
   // ---------- Table transformation: collapse NWEA columns + add Resources ----------
   function transformTable(table, subject) {
     // 1. Update header row to new column structure
+    // ELA uses a tighter Domain/Standards/NWEA layout to free up space for the
+    // (much larger) Skill and Free Resources columns the user reads in practice.
     var thead = table.querySelector("thead");
     if (thead) {
+      var widths = subject === "ela"
+        ? { strand: "5%",  std: "8%",  skill: "22%", res: "36%", troy: "8%",  nwea: "14%", notes: "7%" }
+        : { strand: "11%", std: "12%", skill: "18%", res: "24%", troy: "14%", nwea: "14%", notes: "7%" };
       thead.innerHTML =
         '<tr>' +
-          '<th style="width:11%">Domain / Strand</th>' +
-          '<th style="width:12%">MDE Standards</th>' +
-          '<th style="width:18%">Skill / What students learn</th>' +
-          '<th style="width:24%">Free Resources <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-muted);font-size:10px;">(click Skills cell for full library)</span></th>' +
-          '<th style="width:14%">Troy SD Curriculum</th>' +
-          '<th style="width:14%">NWEA Overlap</th>' +
-          '<th style="width:7%">Notes</th>' +
+          '<th style="width:' + widths.strand + '">Domain / Strand</th>' +
+          '<th style="width:' + widths.std    + '">MDE Standards</th>' +
+          '<th style="width:' + widths.skill  + '">Skill / What students learn</th>' +
+          '<th style="width:' + widths.res    + '">Free Resources <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-muted);font-size:10px;">(click Skills cell for full library)</span></th>' +
+          '<th style="width:' + widths.troy   + '">Troy SD Curriculum</th>' +
+          '<th style="width:' + widths.nwea   + '">NWEA Overlap</th>' +
+          '<th style="width:' + widths.notes  + '">Notes</th>' +
         '</tr>';
     }
 
@@ -189,25 +194,33 @@
           '<div class="rit-band" style="margin-top:4px;">RIT ' + escapeHtml(rit) + '</div>';
       }
 
-      // Build Free Resources cell — show top 4-5 resources w/ type badges
+      // Build Free Resources cell — show top resources w/ type badges.
+      // ELA gets a wider column, so we show more before truncating.
       var resourcesCell = document.createElement("td");
       resourcesCell.setAttribute("data-label", "Free Resources");
       resourcesCell.style.fontSize = "12.5px";
       var resources = cellId ? window.getResourcesForCell(cellId) : [];
+      var resLimit = subject === "ela" ? 7 : 5;
       if (!resources.length) {
         resourcesCell.innerHTML = '<span class="note-text">—</span>';
       } else {
         var html = '<ul style="list-style:none;margin:0;padding:0;">';
-        resources.slice(0, 5).forEach(function (r) {
-          html += '<li style="margin-bottom:4px;line-height:1.4;display:flex;align-items:flex-start;">'
+        resources.slice(0, resLimit).forEach(function (r) {
+          var noteHtml = r.note
+            ? '<div style="font-size:10.5px;color:var(--ink-muted);margin-top:1px;line-height:1.35;">' + escapeHtml(r.note) + '</div>'
+            : '';
+          html += '<li style="margin-bottom:5px;line-height:1.4;display:flex;align-items:flex-start;">'
                 + badgeHtml(r.type)
+                + '<div style="flex:1;">'
                 + '<a href="' + r.url + '" target="_blank" rel="noopener" '
-                + 'style="color:var(--accent);text-decoration:none;font-weight:500;flex:1;">'
+                + 'style="color:var(--accent);text-decoration:none;font-weight:500;">'
                 + escapeHtml(r.name) + '</a>'
+                + noteHtml
+                + '</div>'
                 + '</li>';
         });
-        if (resources.length > 5) {
-          html += '<li style="margin-top:6px;font-size:11px;font-style:italic;color:var(--ink-muted);">+ ' + (resources.length - 5) + ' more — click Skills cell →</li>';
+        if (resources.length > resLimit) {
+          html += '<li style="margin-top:6px;font-size:11px;font-style:italic;color:var(--ink-muted);">+ ' + (resources.length - resLimit) + ' more — click Skills cell for full library →</li>';
         }
         html += '</ul>';
         resourcesCell.innerHTML = html;

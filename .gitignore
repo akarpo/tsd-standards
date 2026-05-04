@@ -1,0 +1,4 @@
+# Backup files created by enrichment / splice scripts
+*.bak
+*.bak2
+*.tmp
