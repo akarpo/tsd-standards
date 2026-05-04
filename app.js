@@ -159,11 +159,17 @@
         '</tr>';
     }
 
-    // 2. For each body row: collapse old columns, build new ones
+    // 2. For each body row: collapse old columns, build new ones.
+    // ELA tables (and Math HS Pre-Calc/Calc/Stats tables) ship with 6
+    // body cells (no Notes column); K-8 + Algebra-track Math tables ship
+    // with 7 (including Notes). Treat notesCell as optional.
     var rows = table.querySelectorAll("tbody tr");
     rows.forEach(function (row) {
       var cells = row.querySelectorAll("td");
-      if (cells.length < 7) return; // already transformed or unexpected shape
+      if (cells.length < 6) return; // unexpected shape — skip
+      // If the row already has the post-transform shape (Resources cell
+      // injected at index 3 with data-label "Free Resources"), skip.
+      if (cells[3] && cells[3].getAttribute("data-label") === "Free Resources") return;
 
       var domainCell      = cells[0];
       var standardsCell   = cells[1];
@@ -171,7 +177,7 @@
       var nweaTestCell    = cells[3];
       var nweaAreaCell    = cells[4];
       var ritCell         = cells[5];
-      var notesCell       = cells[6];
+      var notesCell       = cells[6] || null; // may be missing
 
       var cellId = deriveCellId(row, subject);
       var hasData = cellId && window.DRILL_DATA && window.DRILL_DATA[cellId];
@@ -226,12 +232,11 @@
         resourcesCell.innerHTML = html;
       }
 
-      // Mark Skills cell as drillable
+      // Mark Skills cell as drillable (visual cue only — actual click
+      // handler is attached at the row level below).
       if (hasData) {
         skillsCell.classList.add("drillable");
         skillsCell.setAttribute("data-cell-id", cellId);
-        skillsCell.setAttribute("title", "Click for standard-by-standard detail and full resource library");
-        skillsCell.addEventListener("click", function () { openModal(cellId); });
       }
 
       // Build Troy SD Curriculum cell — K-5 only
@@ -283,14 +288,36 @@
       }
 
       // Replace row contents with new column order
-      // Original: [domain, standards, skills, nweaTest, nweaArea, rit, notes]
+      // Original: [domain, standards, skills, nweaTest, nweaArea, rit, notes?]
       // New:      [domain, standards, skills, resources, troy, nweaCell, notes]
+      // If the source row had no notes cell, synthesize an empty one so the
+      // body shape matches the 7-column header.
       row.removeChild(nweaTestCell);
       row.removeChild(nweaAreaCell);
       row.removeChild(ritCell);
+      if (!notesCell) {
+        notesCell = document.createElement("td");
+        notesCell.setAttribute("data-label", "Notes");
+        notesCell.innerHTML = '<span class="note-text">—</span>';
+        row.appendChild(notesCell);
+      }
       row.insertBefore(resourcesCell, notesCell);
       row.insertBefore(troyCell, notesCell);
       row.insertBefore(nweaCell, notesCell);
+
+      // Make the WHOLE row clickable to open the modal (not just Skills).
+      // We still mark the Skills cell as drillable for the visual cue, but
+      // attach the click handler to the <tr> so any cell triggers the modal.
+      if (hasData) {
+        row.classList.add("row-drillable");
+        row.setAttribute("data-cell-id", cellId);
+        row.setAttribute("title", "Click anywhere in this row for full standard detail + resource library");
+        row.addEventListener("click", function (e) {
+          // Allow internal links (in the resource cell) to work normally.
+          if (e.target && e.target.closest && e.target.closest("a")) return;
+          openModal(cellId);
+        });
+      }
     });
   }
 

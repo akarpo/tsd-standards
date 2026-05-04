@@ -462,14 +462,21 @@ code, .code {
   line-height: 1;
 }
 
-/* Make Skills cells in matrix tables look clickable */
-table.filterable tbody td.drillable {
+/* Whole-row click: every drillable row is clickable; hovering anywhere
+   in the row highlights it and surfaces the "↗ click for detail" cue. */
+table.filterable tbody tr.row-drillable {
   cursor: pointer;
-  position: relative;
   transition: background 0.1s;
 }
-table.filterable tbody td.drillable:hover {
+table.filterable tbody tr.row-drillable:hover {
   background: var(--accent-soft);
+}
+table.filterable tbody tr.row-drillable:hover td.drillable {
+  background: transparent; /* let the row-level highlight show through */
+}
+/* The Skills cell still gets the ↗ glyph as a visual cue. */
+table.filterable tbody td.drillable {
+  position: relative;
 }
 table.filterable tbody td.drillable::after {
   content: "↗";
@@ -481,9 +488,14 @@ table.filterable tbody td.drillable::after {
   opacity: 0.5;
   font-weight: 600;
 }
-table.filterable tbody td.drillable:hover::after {
+table.filterable tbody tr.row-drillable:hover td.drillable::after {
   color: var(--accent);
   opacity: 1;
+}
+/* Ensure links inside resource cells stay clickable above the row click */
+table.filterable tbody tr.row-drillable a {
+  position: relative;
+  z-index: 1;
 }
 
 /* Modal backdrop & panel */
