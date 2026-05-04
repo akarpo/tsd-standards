@@ -147,32 +147,45 @@
     //     (the rowspan from another row covers them)
     var hasExamColumn = !!table.querySelector("td.exam-cell");
 
-    // 1. Update header row to new column structure
-    // ELA uses a tighter Domain/Standards/NWEA layout to free up space for the
-    // (much larger) Skill and Free Resources columns the user reads in practice.
+    // 1. Update header row to new column structure.
+    // ELA tables (and math HS Pre-Calc / Calc / Stats tables) have NO
+    // Exam column and the Notes column was never populated — render
+    // them as 6-column tables. Math K-Alg2 tables have an Exam column
+    // (with rowspan) — render them as 7 columns ending in Exam.
     var thead = table.querySelector("thead");
     if (thead) {
-      // Math + Exam-column tables get a wider rightmost column to fit the
-      // Form A / Form B exam links (originally ~14% in math.html).
-      var widths;
-      if (subject === "ela") {
-        widths = { strand: "5%", std: "8%", skill: "22%", res: "36%", troy: "8%", nwea: "14%", last: "7%" };
-      } else if (hasExamColumn) {
-        widths = { strand: "10%", std: "11%", skill: "16%", res: "22%", troy: "13%", nwea: "13%", last: "15%" };
+      var headerHtml;
+      if (hasExamColumn) {
+        // 7-column layout with Exam on the right — give it a wider 15%
+        // so the Form A / Form B exam-link buttons fit.
+        var w = { strand: "10%", std: "11%", skill: "16%", res: "22%", troy: "13%", nwea: "13%", last: "15%" };
+        headerHtml =
+          '<tr>' +
+            '<th style="width:' + w.strand + '">Domain / Strand</th>' +
+            '<th style="width:' + w.std    + '">MDE Standards</th>' +
+            '<th style="width:' + w.skill  + '">Skill / What students learn</th>' +
+            '<th style="width:' + w.res    + '">Free Resources <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-muted);font-size:10px;">(click Skills cell for full library)</span></th>' +
+            '<th style="width:' + w.troy   + '">Troy SD Curriculum</th>' +
+            '<th style="width:' + w.nwea   + '">NWEA Overlap</th>' +
+            '<th style="width:' + w.last   + '">Exam</th>' +
+          '</tr>';
       } else {
-        widths = { strand: "11%", std: "12%", skill: "18%", res: "24%", troy: "14%", nwea: "14%", last: "7%" };
+        // 6-column layout — Notes column removed (it was always empty).
+        // The reclaimed 7% goes mostly to Free Resources.
+        var w6 = subject === "ela"
+          ? { strand: "5%",  std: "9%",  skill: "23%", res: "41%", troy: "8%",  nwea: "14%" }
+          : { strand: "11%", std: "13%", skill: "19%", res: "29%", troy: "14%", nwea: "14%" };
+        headerHtml =
+          '<tr>' +
+            '<th style="width:' + w6.strand + '">Domain / Strand</th>' +
+            '<th style="width:' + w6.std    + '">MDE Standards</th>' +
+            '<th style="width:' + w6.skill  + '">Skill / What students learn</th>' +
+            '<th style="width:' + w6.res    + '">Free Resources <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-muted);font-size:10px;">(click Skills cell for full library)</span></th>' +
+            '<th style="width:' + w6.troy   + '">Troy SD Curriculum</th>' +
+            '<th style="width:' + w6.nwea   + '">NWEA Overlap</th>' +
+          '</tr>';
       }
-      var lastLabel = hasExamColumn ? "Exam" : "Notes";
-      thead.innerHTML =
-        '<tr>' +
-          '<th style="width:' + widths.strand + '">Domain / Strand</th>' +
-          '<th style="width:' + widths.std    + '">MDE Standards</th>' +
-          '<th style="width:' + widths.skill  + '">Skill / What students learn</th>' +
-          '<th style="width:' + widths.res    + '">Free Resources <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-muted);font-size:10px;">(click Skills cell for full library)</span></th>' +
-          '<th style="width:' + widths.troy   + '">Troy SD Curriculum</th>' +
-          '<th style="width:' + widths.nwea   + '">NWEA Overlap</th>' +
-          '<th style="width:' + widths.last   + '">' + lastLabel + '</th>' +
-        '</tr>';
+      thead.innerHTML = headerHtml;
     }
 
     // 2. For each body row: collapse old columns, build new ones.
@@ -310,38 +323,37 @@
         }
       }
 
-      // Replace row contents with new column order
-      // Original: [domain, standards, skills, nweaTest, nweaArea, rit, notes/exam?]
-      // New:      [domain, standards, skills, resources, troy, nweaCell, notes/exam]
-      // Three cases for the 7th (rightmost) cell:
-      //   (a) lastCell exists (Notes or Exam cell) — insert new cells BEFORE it
-      //   (b) lastCell is null AND this table has an Exam column — the row is
-      //       visually covered by an Exam rowspan from a sibling row, so
-      //       just append the new cells (do NOT synthesize a Notes cell)
-      //   (c) lastCell is null AND no Exam column (typical ELA / Math
-      //       Pre-Calc-Stats) — synthesize an empty Notes cell to match
-      //       the 7-column header
+      // Replace row contents with new column order.
+      // Source row: [domain, standards, skills, nweaTest, nweaArea, rit, notes/exam?]
+      // After transform: 6 cells (no Exam column tables) or 7 cells (Exam column tables).
+      //   (a) lastCell exists AND is the Exam cell — insert new cells BEFORE it
+      //       (preserves the Exam cell as the rightmost column with rowspan intact)
+      //   (b) lastCell exists AND is just a Notes cell — drop it (the 6-col
+      //       header has no Notes), then append the new cells
+      //   (c) lastCell is null AND table has Exam rowspan — append new cells
+      //       (the rowspan from a sibling row covers the last column)
+      //   (d) lastCell is null AND no Exam column — append new cells to match
+      //       the 6-col header
       row.removeChild(nweaTestCell);
       row.removeChild(nweaAreaCell);
       row.removeChild(ritCell);
-      if (lastCell) {
+      if (lastCell && hasExamColumn) {
         row.insertBefore(resourcesCell, lastCell);
         row.insertBefore(troyCell, lastCell);
         row.insertBefore(nweaCell, lastCell);
-      } else if (hasExamColumn) {
-        // Rowspan from another row covers the last column; just append.
+      } else if (lastCell) {
+        // Existing 7th cell is an empty Notes cell — drop it (header now
+        // only has 6 columns).
+        row.removeChild(lastCell);
         row.appendChild(resourcesCell);
         row.appendChild(troyCell);
         row.appendChild(nweaCell);
       } else {
-        // Synthesize an empty Notes cell so body matches the 7-col header.
-        var notesCell = document.createElement("td");
-        notesCell.setAttribute("data-label", "Notes");
-        notesCell.innerHTML = '<span class="note-text">—</span>';
-        row.appendChild(notesCell);
-        row.insertBefore(resourcesCell, notesCell);
-        row.insertBefore(troyCell, notesCell);
-        row.insertBefore(nweaCell, notesCell);
+        // No 7th cell at all — either rowspan-covered (math) or 6-col
+        // ELA / math Pre-Calc-Stats. Just append.
+        row.appendChild(resourcesCell);
+        row.appendChild(troyCell);
+        row.appendChild(nweaCell);
       }
 
       // Make the WHOLE row clickable to open the modal (not just Skills).
