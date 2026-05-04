@@ -762,3 +762,68 @@ scope. Two issues were flagged: one fixed (math-5 plywood units),
 one recommended for fix (math-algebra-1 system pricing).
 
 Validation completed: 2026-05-04.
+
+---
+
+# Addendum — Elementary language pass (K–5)
+
+A second pass focused specifically on **language register** for Grades
+K–5 (Forms A + B). The user's note: question text was using vocabulary
+more formal than students typically encounter at that age. The
+softening pass replaces formal teacher-register words with the
+common student-facing equivalents while preserving CCSS-mandated
+math vocabulary (e.g., "decompose" remains a K standard term but is
+glossed in passing as "break apart"; "classify" stays at Gr 4–5
+because 4.G.A.2 and 5.G.B.4 use that exact word).
+
+Replacements applied via `_scripts/soften_exam_language.py` (committed
+for reproducibility):
+
+| Formal (before) | Student-friendly (after) | Where |
+|------------------|--------------------------|-------|
+| Compute each fact | Find each answer | K–5 |
+| Compute each | Find each | K–5 |
+| Compute and answer | Find the total | K–5 |
+| Compute and convert | Find the total and convert | K–5 |
+| Compute using the standard algorithm | Use the standard way (the algorithm) to find each answer | K–5 |
+| Compute perimeter and area | Find the perimeter and area | K–5 |
+| compute (lowercase, in-sentence) | find / solve | K–5 |
+| Justify | Explain (or "Tell why") | K–5 |
+| Determine whether | Tell whether / Decide whether | K–5 |
+| Determine | Find | K–5 |
+| Express | Write | K–5 |
+| Evaluate | Find the value of / Solve | K–5 |
+| Verify / verifies | Check / checks | K–5 |
+| Recall (parenthetical) | use what you know | K–5 |
+| fluent / fluency | quick / quick math facts | K–5 |
+| manipulates concrete objects | uses real objects | K, K Form B |
+| Rote counting | Counting out loud | K |
+| Decompose 7 / each teen number | Break 7 into two groups / Break each teen number apart | K |
+| Compose and decompose teen numbers (heading) | Make and break apart teen numbers | K |
+| Identify two-/three-dimensional shapes (heading) | Name flat/solid shapes | K |
+| Compose a shape (heading) | Build a shape | K |
+| Free composition | Make your own picture | K |
+| Identify (K-2 only) | Name | K–2 |
+| Classify (K-2 only) | Sort | K–2 |
+| Construct (K-2 only) | Draw | K–2 |
+| before computing | before solving | 3, 4 |
+
+**Vocabulary intentionally retained** (CCSS-aligned grade-appropriate
+math terms, even when they look formal):
+
+- "expanded form", "standard form", "word form" — 2.NBT.A.3
+- "number sentence", "equation" — K.OA, 1.OA, 3.OA
+- "regrouping" — 2.NBT.B
+- "fact family" — 3.OA.B
+- "standard algorithm" — 4.NBT.B (Gr 4–5)
+- "decompose / compose" (in 3.NF, 4.NF, 5.NF fraction context) — Gr 3+
+- "Classify" / "Identify" at Gr 3+ — explicit standard wording in
+  3.G.A.1, 4.G.A.2, 5.G.B.4
+- "simplest form", "common denominator", "equivalent fractions" — 4.NF, 5.NF
+
+**Total substitutions applied:** 96 across 12 elementary exam files
+(K through 5, Forms A and B).
+
+**HTML balance check:** all 12 files still pass tag-balance verification.
+
+Elementary language pass completed: 2026-05-04.
