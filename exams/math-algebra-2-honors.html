@@ -24,7 +24,7 @@
   </div>
 
   <h1 class="exam-title">Algebra 2 Honors — Testing-Out Examination</h1>
-  <p class="exam-subtitle">A student who passes this examination has demonstrated mastery of the Common Core Algebra 2 Honors standards (CCSS-M conceptual categories N-CN, A-APR, A-REI, F-IF, F-BF, F-LE, F-TF, S-IC) at the rigor of a final exam in an advanced textbook (Brown, <em>Advanced Mathematics</em>; Forester, <em>Algebra and Trigonometry</em>; AoPS, <em>Intermediate Algebra</em>) and is eligible to advance directly to AP Precalculus.</p>
+  <p class="exam-subtitle">A student who passes this examination has demonstrated mastery of the Common Core Algebra 2 Honors standards (CCSS-M conceptual categories N-CN, A-APR, A-REI, F-IF, F-BF, F-LE, F-TF, S-IC) at the rigor of a final exam in a standard honors textbook (Larson, <em>Algebra 2</em> Honors; Forester, <em>Algebra and Trigonometry</em>) and is eligible to advance directly to AP Precalculus.</p>
 
   <div class="exam-id-strip">
     <div class="field"><span class="label">Student Name</span><span class="blank"></span></div>
@@ -237,7 +237,7 @@
       <li>Let \(a_n\) denote the value at the end of month 360 of the deposit made at the end of month \(n\), for \(n = 1, 2, \ldots, 360\). Write \(a_n\) as an explicit function of \(n\). State whether \((a_n)\) is arithmetic, geometric, or neither, and (if geometric) state the common ratio.</li>
       <li>Express the final account value \(S = a_1 + a_2 + \cdots + a_{360}\) as a finite geometric series. Apply the formula \( \dfrac{r^{N} - 1}{r - 1} \) to compute \(S\). Round to the nearest dollar.</li>
       <li>After year 30, the contributor stops depositing and lets the balance accumulate undisturbed for 5 more years at the same monthly rate. Find the balance at the end of year 35. Round to the nearest dollar.</li>
-      <li>A separate annuity instead pays $1{,}000 every six months <em>in perpetuity</em>, with a discount rate of 3% per six-month period. Use the geometric-series sum formula \( \sum_{k=1}^{\infty} a r^{k-1} = \dfrac{a}{1 - r} \) (valid when \(|r|<1\)) to find the present value. Justify the convergence in one sentence.</li>
+      <li>Compute the infinite geometric sum \( \displaystyle \sum_{k=1}^{\infty} 1000 \cdot \left(\tfrac{1}{2}\right)^{k-1} \) using the formula \( \sum_{k=1}^{\infty} a r^{k-1} = \dfrac{a}{1 - r} \) (valid when \(|r| < 1\)). Justify the convergence in one sentence.</li>
     </ol>
     <div class="work-space tall"></div>
   </div>
@@ -267,7 +267,7 @@
         </table>
       </li>
       <li>Find the total length of all suspender rods. Count the central rod (\(x = 0\)) once and each pair at \(x = \pm 25,\,\pm 50,\,\pm 75\) twice; do <em>not</em> count rods at the ends, which have length 0. Show your sum.</li>
-      <li>An engineer proposes replacing the parabolic cable with an elliptical arc passing through \((-100, 50)\), \((0, 0)\), and \((100, 50)\). Show that infinitely many ellipses (with axes parallel to the coordinate axes) pass through these three points. Provide one specific ellipse equation in standard form, then state in one sentence what additional condition would pin the ellipse down uniquely.</li>
+      <li>Find the equation of the parabola from (a) in vertex form \(y = a(x - h)^2 + k\). State the vertex and the direction of opening, and verify the equation passes through \((100, 50)\).</li>
     </ol>
     <div class="work-space tall"></div>
   </div>
@@ -284,11 +284,10 @@
     </div>
     <ol class="parts">
       <li>Compute the sample proportion \(\hat p\) to four decimal places.</li>
-      <li>State suitable null and alternative hypotheses to test whether the district's 70% claim <em>overstates</em> the true proportion. Use \(p_0\) for the hypothesized value.</li>
-      <li>Verify all conditions for using a Normal approximation to the sampling distribution of \(\hat p\) under \(H_0\). Address each condition explicitly: random sampling, independence (10% rule), and the success/failure check using \(np_0\) and \(n(1-p_0)\).</li>
-      <li>Compute the test statistic \(z\) and the corresponding one-sided \(p\)-value. Show the standard-error formula and your arithmetic; round \(z\) to two decimals and the \(p\)-value to four.</li>
-      <li>State a conclusion in context using significance level \(\alpha = 0.05\). Quote the \(p\)-value, compare it to \(\alpha\), and write one full sentence about what this means for the district's claim.</li>
-      <li>Construct a 95% confidence interval for the true population proportion \(p\), using \(\hat p\) (not \(p_0\)) as the center. Give the interval to four decimal places. Then write one full sentence interpreting the interval in context. Note whether 0.70 lies inside or outside the interval, and how that observation is — or is not — consistent with your conclusion in (e).</li>
+      <li>Compute the standard error of \(\hat p\) using the formula \( \text{SE} = \sqrt{\hat p (1 - \hat p)/n} \). Round to four decimal places.</li>
+      <li>Construct a 95% confidence interval for the true population proportion \(p\) using \(\hat p \pm 1.96 \cdot \text{SE}\). Give the interval to four decimal places.</li>
+      <li>Write one full sentence interpreting the interval in context.</li>
+      <li>Does the district's claim of 70% lie inside the interval? In one sentence, comment on whether the data is consistent with the district's claim.</li>
     </ol>
     <div class="work-space tall"></div>
   </div>
